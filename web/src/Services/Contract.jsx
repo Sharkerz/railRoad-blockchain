@@ -1,6 +1,6 @@
 
 import Web3 from "web3";
-import contract from "../RailRoad.json";
+import contract from '../Contracts/RailRoad.json';
 
 const ganache = 'HTTP://127.0.0.1:7545';
 // const metamask = window.ethereum;
@@ -22,6 +22,10 @@ class Contract {
     return await railRoad.methods.isAdmin().call({ from: account, gasPrice: '20000000000'});
   }
 
+  allCards = async (account) => {
+    return await railRoad.methods.retrieveAllCards().call({ from: account});
+  }
+
   availableCards = async (account) => {
     return await railRoad.methods.getAvailableCards().call({ from: account, gasPrice: '20000000000'});
   }
@@ -33,6 +37,7 @@ class Contract {
   createCard = async (account, data) => {
     return await railRoad.methods.createCard(data.name, data.price, data.count, data.discount, data.image, data.description).call({ from: account, gasPrice: '20000000000'});
   }
+
 }
 
 export default new Contract();

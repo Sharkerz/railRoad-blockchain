@@ -14,14 +14,19 @@ export default function Cards () {
     setAvailableCards(_availableCards);
     const _myCards = await Contract.myCards(account);
     setMyCards(_myCards);
+
+    if (isAdmin) {
+      const _allCards = await Contract.allCards(account);
+      console.log("allCards", _allCards);
+    }
+
+    console.log("MyCards", _myCards);
+    console.log("availableCards", _availableCards);
   };
 
   useEffect(() => {
     getCards();
   }, []);
-
-  console.log("MyCards", myCards);
-  console.log("availableCards", availableCards);
 
   return (
     <div>
