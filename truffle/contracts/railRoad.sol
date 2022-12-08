@@ -51,12 +51,14 @@ contract RailRoad {
          CARDS
     **************/
 
-    function createCard(string memory name, uint price, uint count, uint discount, string memory image, string memory description) external onlyAdmin {
+    function createCard(string memory name, uint price, uint count, uint discount, string memory image, string memory description) external onlyAdmin returns (Card[] storage) {
         for (uint i = 0; i < count; i++) {
             Card memory newCard = Card(cards.length, name, price, discount, image, description, address(0), groupId);
             cards.push(newCard);
         }
         groupId++;
+
+        return cards;
     }
 
     function getMyCards() public view returns (Card[] memory) {
@@ -99,7 +101,7 @@ contract RailRoad {
         return availableCards;
     }
 
-    function retrieveAllCards() external view onlyAdmin returns (Card[] memory){
+    function retrieveAllCards() external view onlyAdmin returns (Card[] storage){
         return cards;
     }
 

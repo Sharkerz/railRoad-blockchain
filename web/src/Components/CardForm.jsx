@@ -4,12 +4,12 @@ import { useAuth } from "../Contexts/AuthContext";
 
 export default function CardForm () {
   const { account, isAdmin } = useAuth()
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(0)
-  const [count, setCount] = useState(0);
-  const [discount, setDiscount] = useState(0);
-  const [image, setImage] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState("test");
+  const [price, setPrice] = useState(10)
+  const [count, setCount] = useState(10);
+  const [discount, setDiscount] = useState(10);
+  const [image, setImage] = useState("test");
+  const [description, setDescription] = useState("test");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +26,6 @@ export default function CardForm () {
     const resp = await Contract.createCard(account, data);
 
     console.log('resp', resp);
-
     console.log("cards should have been created");
   }
 
