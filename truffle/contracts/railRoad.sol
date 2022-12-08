@@ -17,6 +17,7 @@ contract RailRoad {
         uint price;
         uint discount;
         string image;
+        
         string description;
         address owner;
         uint groupId;
@@ -57,8 +58,6 @@ contract RailRoad {
             cards.push(newCard);
         }
         groupId++;
-
-        return cards;
     }
 
     function getMyCards() public view returns (Card[] memory) {
@@ -106,6 +105,7 @@ contract RailRoad {
     }
 
     function buyCard(uint id) external payable returns (Card memory card) {
+
         for(uint i = 0; i < cards.length; i++) {
             if (cards[i].id == id) {
                 require(cards[i].owner == address(0), "Card not available");
@@ -135,8 +135,29 @@ contract RailRoad {
         TICKETS
     **************/
 
+    function ticketPriceAfterDiscount() external view returns (uint price) {
+        uint amountDiscount = 0;
+        for (uint i = 0; i < cards.length; i++) {
+            if (cards[i].owner == msg.sender && cards[i].discount > amountDiscount) {
+                amountDiscount = cards[i].discount;
+            }    
+        }
+        uint reduction = (ticketPrice * amountDiscount) / 100;
+        return ticketPrice - reduction;
+    }
+
     function buyTicket(string memory typeTicket) external payable returns (Ticket memory ticket) {
-        require(ticketPrice == msg.value, "Probleme dans le paiement");
+
+        // Get Discount
+        uint amountDiscount = 0;
+        for (uint i = 0; i < cards.length; i++) {
+            if (cards[i].owner == msg.sender && cards[i].discount > amountDiscount) {
+                amountDiscount = cards[i].discount;
+            }    
+        }
+        uint reduction = (ticketPrice * amountDiscount) / 100;
+
+        require((ticketPrice - reduction) == msg.value, "Probleme dans le paiement");
         require(TicketTypes[typeTicket], "Ce type de ticket n'existe pas");
         Ticket memory newTicket = Ticket(typeTicket, msg.sender);
         tickets.push(newTicket);
