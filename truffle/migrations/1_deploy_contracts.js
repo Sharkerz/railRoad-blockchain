@@ -7,5 +7,5 @@ module.exports = function(deployer) {
   deployer.link(ConvertLib, MetaCoin);
   deployer.deploy(MetaCoin);
 
-  deployer.deploy(railRoad, "0x238972935dAA7CABa61bafEb815E64044696E014", 2);
+  deployer.deploy(railRoad, "0xedb20A0fD1F72C0aE0D8953EdB94BB8c0Cc0b009", 2);
 };

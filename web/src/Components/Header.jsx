@@ -7,16 +7,35 @@ export default function Header () {
 
   return (
     <div style={{ padding: "20px" }}>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div>
-          <p>Mon compte : {account}</p>
-          <p>Mon statut : {isAdmin ? 'Administrateur' : 'Utilisateur'}</p>
+
+      <div className="header">
+        <div className="header-text">
+          <div className="my-account">
+            <p>{account}</p>
+          </div>
         </div>
-        <p>Ma balance : {balance} ETH</p>
+        <div className="button-cards-tickets">
+          <div>
+            <Link to="/cards" className="button-switch-cards-tickets" >Cards</Link>
+          </div>
+          <div>
+            <Link to="/tickets" className="button-switch-cards-tickets">Tickets</Link>
+          </div>
       </div>
-      <div>
-        <Link to="/cards" >Cards</Link>
-        <Link to="/tickets" >Tickets</Link>
+
+        <div className="profil-card">
+        <div className="profil-title">Mon profil</div>
+        <div className="profil-status">
+          <div className="profil-status-title">Statut</div>              
+          <div className="profil-status-data">{isAdmin ? 'Administrateur' : 'Utilisateur'}</div>              
+        </div>
+        <div className="profil-balance">
+          <div className="profil-balance-title">Balance</div>  
+          <div className="profil-balance-data">{balance} ETH</div>           
+        </div>
+        </div>  
+
+
       </div>
     </div>
   );

@@ -1,6 +1,14 @@
 .App {
   text-align: center;
+  background-color: #17191d;
+  height: 100vh;
 }
+
+@font-face {
+  font-family: "NeometricMedium";
+  src: url("./fonts/Neometric Alt Light.ttf") format("truetype");
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +43,148 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.header-text {
+  color: #ffffff;
+}
+
+.my-account {
+  color: #ffffff;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 0 15px;
+  position: relative;
+  max-width: 180px;
+  transition: max-width .3s;
+  cursor: pointer;
+  font-family: "NeometricMedium";
+}
+
+.my-account p {
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.my-account:after {
+  content: attr(data-filetype);
+  position: absolute;
+  left: 100%;
+  max-width: 0;
+  transition: max-width .3s;
+}
+
+.my-account:hover {
+  max-width: 71%;
+  transition: max-width .4s;
+}
+
+.my-account:hover:after {
+  display: none;
+  transition: max-width .3s;
+}
+
+.profil-card {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  border-radius: 8px;
+  width: 300px;
+  color: #ffffff;
+  background-color: #0c0c0c;
+  box-shadow: 0px 0px 15px 4px rgba(0,0,0,0.38);
+  margin-left: auto;
+}
+
+.profil-title {
+  font-size: 20px;
+  font-family: "NeometricMedium";
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.profil-balance {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.profil-balance-title {
+  margin-top: 25px;
+  font-size: 15px;
+  font-family: "NeometricMedium";
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.profil-balance-data {
+  margin-top: 15px;
+  font-size: 15px;
+  font-family: "NeometricMedium";
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding: 20px 0;
+  border-radius: 8px;
+  background-color: #17191d;
+  width: 100%;
+}
+
+.profil-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.profil-status-title {
+  margin-top: 25px;
+  font-size: 15px;
+  font-family: "NeometricMedium";
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.profil-status-data {
+  margin-top: 15px;
+  font-size: 15px;
+  font-family: "NeometricMedium";
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding: 20px 0;
+  border-radius: 8px;
+  background-color: #17191d;
+  width: 100%;
+}
+
+.cards-title {
+  font-size: 15px;
+  font-family: "NeometricMedium";
+  color: #ffffff;
+}
+
+.available-cards-title {
+  font-size: 15px;
+  font-family: "NeometricMedium";
+  color: #ffffff;
+}
+
+.button-cards-tickets {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3%;
+}
+
+.button-switch-cards-tickets {
+  font-size: 15px;
+  font-family: "NeometricMedium";
+  color: #ffffff;
 }

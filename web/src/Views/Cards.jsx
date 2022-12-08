@@ -25,7 +25,7 @@ export default function Cards () {
 
   return (
     <div>
-      <div>
+      <div className="cards-title">
         <h1>My cards : {myCards && myCards.length}</h1>
         <div>
           {myCards && myCards.map(e => (
@@ -33,7 +33,7 @@ export default function Cards () {
           ))}
         </div>
       </div>
-      <div>
+      <div className="available-cards-title">
         <h1>Available cards {isAdmin && <a onClick={() => {setShowModal(!showModal)}}>show/hide</a>}</h1>
         <div>
           {availableCards && availableCards.map(e => (
