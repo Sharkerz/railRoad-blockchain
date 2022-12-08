@@ -21,7 +21,7 @@ export function AuthProvider({ children }) {
     const _balance = await Contract.balance(_accounts[accountToUse])
     setBalance(_balance);
 
-    const _isAdmin = await Contract.isAdmin();
+    const _isAdmin = await Contract.isAdmin(_accounts[accountToUse]);
     setIsAdmin(_isAdmin);
     setLoading(false);
   }
