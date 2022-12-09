@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Contract from "../Services/Contract";
 import { useAuth } from "../Contexts/AuthContext";
 
-export default function CardForm () {
+export default function CardForm (props) {
   const { account, isAdmin } = useAuth()
   const [name, setName] = useState("test");
   const [price, setPrice] = useState(10)
@@ -27,6 +27,8 @@ export default function CardForm () {
 
     console.log('resp', resp);
     console.log("cards should have been created");
+    
+    props.getCards();
   }
 
   return (
