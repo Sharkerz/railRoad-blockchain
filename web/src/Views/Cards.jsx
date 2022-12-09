@@ -29,7 +29,7 @@ export default function Cards () {
   }, []);
 
   return (
-    <div>
+    <div style={{marginTop: "-240px", zIndex: "10000"}}>
       <div className="cards-title">
         <h1>My cards : {myCards && myCards.length}</h1>
         <div>

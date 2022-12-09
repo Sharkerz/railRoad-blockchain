@@ -5,7 +5,7 @@ import contract from '../Contracts/RailRoad.json';
 const ganache = 'HTTP://127.0.0.1:7545';
 // const metamask = window.ethereum;
 const web3 = new Web3(ganache);
-const railRoad = new web3.eth.Contract(contract.abi, '0x68b2BB96dB52231287501C0C980c9e40EF45766c', {gasPrice: '20000000000', gas: '20000000000'});
+const railRoad = new web3.eth.Contract(contract.abi, '0x0De1fD86f5539bF563A761cF528584c47356d2EA', {gasPrice: '20000000000', gas: '20000000000'});
 
 class Contract {
   accounts = async () => {

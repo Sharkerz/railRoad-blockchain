@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { Button } from 'antd';
 import { useAuth } from "../Contexts/AuthContext";
 
 export default function Header () {
   const { account, balance, isAdmin } = useAuth()
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px"}}>
 
       <div className="header">
         <div className="header-text">
@@ -15,12 +16,8 @@ export default function Header () {
           </div>
         </div>
         <div className="button-cards-tickets">
-          <div>
             <Link to="/cards" className="button-switch-cards-tickets" >Cards</Link>
-          </div>
-          <div>
             <Link to="/tickets" className="button-switch-cards-tickets">Tickets</Link>
-          </div>
       </div>
 
         <div className="profil-card">

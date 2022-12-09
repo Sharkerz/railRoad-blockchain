@@ -1,6 +1,18 @@
 import React, { useState } from "react";
 import Contract from "../Services/Contract";
 import { useAuth } from "../Contexts/AuthContext";
+import {
+  Button,
+  Cascader,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Select,
+  Switch,
+  TreeSelect,
+} from 'antd';
 
 export default function CardForm () {
   const { account, isAdmin } = useAuth()
@@ -30,34 +42,31 @@ export default function CardForm () {
   }
 
   return (
-    <div style={{ padding: "20px" }}>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Nom:
-          <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
-        </label>
-        <label>
-          Prix:
-          <input type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />
-        </label>
-        <label>
-          Nombre:
-          <input type="number" name="count" value={count} onChange={(e) => setCount(e.target.value)} />
-        </label>
-        <label>
-          Réduction:
-          <input type="number" name="discount" value={discount} onChange={(e) => setDiscount(e.target.value)} />
-        </label>
-        <label>
-          Image string:
-          <input type="text" name="image" value={image} onChange={(e) => setImage(e.target.value)} />
-        </label>
-        <label>
-          Description:
-          <input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+    <div style={{ padding: "20px" }} className="form-wrapper">
+      <Form onSubmit={handleSubmit}
+            labelCol={{ span: 4 }}
+            wrapperCol={{ span: 14 }}
+            layout="horizontal" className="form">
+              <div className="input-wrapper">
+                <div className="input-group">
+                  <Input className="input-form" style={{width: "200px"}} placeholder="Nom" type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+
+                  <Input  className="input-form" style={{width: "150px"}} placeholder="Prix" type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />
+                </div>
+                <div className="input-group">
+                  <Input  className="input-form" style={{width: "175px"}} placeholder="Nombre" type="number" name="count" value={count} onChange={(e) => setCount(e.target.value)} />
+
+                  <Input  className="input-form" style={{width: "175px"}} placeholder="Réduction" type="number" name="discount" value={discount} onChange={(e) => setDiscount(e.target.value)} />
+                </div>
+
+                  <Input className="input-form" style={{width: "350px"}} placeholder="Image string" type="text" name="image" value={image} onChange={(e) => setImage(e.target.value)} />
+
+                  <Input className="input-form" style={{width: "350px"}} placeholder="Description" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+
+                <Button type="submit" value="Submit" className="button">Créer la carte</Button>
+              </div>
+
+      </Form>
     </div>
   );
 }
