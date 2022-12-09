@@ -19,7 +19,7 @@ class Contract {
   }
 
   isAdmin = async (account) => {
-    return await railRoad.methods.isAdmin().call({ from: account, gasPrice: '20000000000'});
+    return await railRoad.methods.isAdmin().call({ from: account });
   }
 
   allCards = async (account) => {
@@ -27,15 +27,15 @@ class Contract {
   }
 
   availableCards = async (account) => {
-    return await railRoad.methods.getAvailableCards().call({ from: account, gasPrice: '20000000000'});
+    return await railRoad.methods.getAvailableCards().call({ from: account});
   }
 
   myCards = async (account) => {
-    return await railRoad.methods.getMyCards().call({ from: account, gasPrice: '20000000000'});
+    return await railRoad.methods.getMyCards().call({ from: account});
   }
 
   createCard = async (account, data) => {
-    return await railRoad.methods.createCard(data.name, data.price, data.count, data.discount, data.image, data.description).call({ from: account, gasPrice: '20000000000', gas: '20000000000'});
+    return await railRoad.methods.createCard(data.name, data.price, data.count, data.discount, data.image, data.description).send({ from: account, gasLimit: 2100000,gas: 4700000});
   }
 }
 
