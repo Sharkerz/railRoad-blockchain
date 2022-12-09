@@ -5,7 +5,7 @@ import contract from '../Contracts/RailRoad.json';
 const ganache = 'HTTP://127.0.0.1:7545';
 // const metamask = window.ethereum;
 const web3 = new Web3(ganache);
-const railRoad = new web3.eth.Contract(contract.abi, '0x68b2BB96dB52231287501C0C980c9e40EF45766c', {gasPrice: '20000000000', gas: '20000000000'});
+const railRoad = new web3.eth.Contract(contract.abi, '0x1A0Cdb75fDcEe40Cb2Ee8599D53123CFb93496Eb');
 
 class Contract {
   accounts = async () => {
@@ -19,7 +19,7 @@ class Contract {
   }
 
   isAdmin = async (account) => {
-    return await railRoad.methods.isAdmin().call({ from: account, gasPrice: '20000000000'});
+    return await railRoad.methods.isAdmin().call({ from: account });
   }
 
   allCards = async (account) => {
@@ -27,15 +27,15 @@ class Contract {
   }
 
   availableCards = async (account) => {
-    return await railRoad.methods.getAvailableCards().call({ from: account, gasPrice: '20000000000'});
+    return await railRoad.methods.getAvailableCards().call({ from: account});
   }
 
   myCards = async (account) => {
-    return await railRoad.methods.getMyCards().call({ from: account, gasPrice: '20000000000'});
+    return await railRoad.methods.getMyCards().call({ from: account});
   }
 
   createCard = async (account, data) => {
-    return await railRoad.methods.createCard(data.name, data.price, data.count, data.discount, data.image, data.description).call({ from: account, gasPrice: '20000000000', gas: '20000000000'});
+    return await railRoad.methods.createCard(data.name, data.price, data.count, data.discount, data.image, data.description).call({ from: account, gas: '20000000000'});
   }
 }
 
