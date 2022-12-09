@@ -58,6 +58,8 @@ contract RailRoad {
             cards.push(newCard);
         }
         groupId++;
+
+        return cards;
     }
 
     function getMyCards() public view returns (Card[] memory) {
