@@ -8,6 +8,7 @@ const web3 = new Web3(ganache);
 const railRoad = new web3.eth.Contract(contract.abi, contract.networks[1337].address, {gasPrice: '20000000000', gas: '20000000000'});
 
 class Contract {
+  // User
   accounts = async () => {
     return await web3.eth.getAccounts();
   }
@@ -22,6 +23,7 @@ class Contract {
     return await railRoad.methods.isAdmin().call({ from: account });
   }
 
+  // Cards
   allCards = async (account) => {
     return await railRoad.methods.retrieveAllCards().call({ from: account});
   }
@@ -40,6 +42,19 @@ class Contract {
 
   buyCard = async (account, id, price) => {
     return await railRoad.methods.buyCard(id).send({ from: account, gasLimit: 2100000, gas: 4700000, value: price});
+  }
+
+  // Tickets
+  ticketPrice = async (account) => {
+    return await railRoad.methods.ticketPriceAfterDiscount().call({ from: account});
+  }
+
+  myTickets = async (account) => {
+    return await railRoad.methods.getMyTickets().call({ from: account});
+  }
+
+  buyTicket = async (account, type, price) => {
+    return await railRoad.methods.buyTicket(type).send({ from: account, gasLimit: 2100000, gas: 4700000, value: price});
   }
 }
 

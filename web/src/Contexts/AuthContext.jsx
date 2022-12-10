@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import Contract from "../Services/Contract";
 
 const AuthContext = React.createContext();
-const accountToUse = 0;
+const accountToUse = 1;
 
 export function useAuth() {
     return useContext(AuthContext)
