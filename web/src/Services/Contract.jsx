@@ -5,7 +5,7 @@ import contract from '../Contracts/RailRoad.json';
 const ganache = 'HTTP://127.0.0.1:7545';
 // const metamask = window.ethereum;
 const web3 = new Web3(ganache);
-const railRoad = new web3.eth.Contract(contract.abi, '0x0De1fD86f5539bF563A761cF528584c47356d2EA', {gasPrice: '20000000000', gas: '20000000000'});
+const railRoad = new web3.eth.Contract(contract.abi, contract.networks[1337].address, {gasPrice: '20000000000', gas: '20000000000'});
 
 class Contract {
   accounts = async () => {
@@ -36,6 +36,10 @@ class Contract {
 
   createCard = async (account, data) => {
     return await railRoad.methods.createCard(data.name, data.price, data.count, data.discount, data.image, data.description).send({ from: account, gasLimit: 2100000,gas: 4700000});
+  }
+
+  buyCard = async (account, id, price) => {
+    return await railRoad.methods.buyCard(id).send({ from: account, gasLimit: 2100000, gas: 4700000, value: price});
   }
 }
 

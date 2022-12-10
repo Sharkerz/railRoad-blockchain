@@ -4,7 +4,7 @@ import { useAuth } from "../Contexts/AuthContext";
 import { CardForm } from "../Components";
 
 export default function Cards () {
-  const { account, isAdmin } = useAuth()
+  const { account, isAdmin, getBalance } = useAuth()
   const [availableCards, setAvailableCards] = useState();
   const [availableCardsGrouped, setAvailableCardsGrouped] = useState();
   const [myCards, setMyCards] = useState();
@@ -28,6 +28,13 @@ export default function Cards () {
     console.log("MyCards", _myCards);
     console.log("availableCards", _availableCards);
   };
+
+  const buyCard = async (card) => {
+    const buyedCard = await Contract.buyCard(account, card.id, card.price);
+
+    getCards();
+    getBalance();
+  }
 
   useEffect(() => {
     getCards();
@@ -62,6 +69,7 @@ export default function Cards () {
                 <p>Description: {cards[0].description}</p>
                 <p>Réduction: {cards[0].discount} %</p>
                 <p>Nombre disponible: {cards.length}</p>
+                <a onClick={() => buyCard(cards[0])}>Acheter</a>
               </div>
             )
           })}

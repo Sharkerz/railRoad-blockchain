@@ -26,11 +26,16 @@ export function AuthProvider({ children }) {
     setLoading(false);
   }
 
+  const getBalance = async () => {
+    const _balance = await Contract.balance(account);
+    setBalance(_balance);
+  }
+
   useEffect(() => {
     requestAccounts();
   }, [])
 
-  const value = { account, balance, isAdmin }
+  const value = { account, balance, isAdmin, getBalance }
 
   return (
     <AuthContext.Provider value={value}>

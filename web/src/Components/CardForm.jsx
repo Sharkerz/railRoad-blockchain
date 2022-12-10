@@ -45,8 +45,7 @@ export default function CardForm (props) {
 
   return (
     <div style={{ padding: "20px" }} className="form-wrapper">
-      <Form onSubmit={handleSubmit}
-            labelCol={{ span: 4 }}
+      <Form labelCol={{ span: 4 }}
             wrapperCol={{ span: 14 }}
             layout="horizontal" className="form">
               <div className="input-wrapper">
@@ -65,7 +64,7 @@ export default function CardForm (props) {
 
                   <Input className="input-form" style={{width: "350px"}} placeholder="Description" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
 
-                <Button type="submit" value="Submit" className="button">Créer la carte</Button>
+                <Button type="submit" value="Submit" className="button" onClick={handleSubmit}>Créer la carte</Button>
               </div>
 
       </Form>
