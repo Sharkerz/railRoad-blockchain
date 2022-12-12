@@ -3,15 +3,8 @@ import Contract from "../Services/Contract";
 import { useAuth } from "../Contexts/AuthContext";
 import {
   Button,
-  Cascader,
-  DatePicker,
   Form,
   Input,
-  InputNumber,
-  Radio,
-  Select,
-  Switch,
-  TreeSelect,
 } from 'antd';
 
 export default function CardForm (props) {

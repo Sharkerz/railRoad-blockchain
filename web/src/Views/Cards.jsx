@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Contract from "../Services/Contract";
 import { useAuth } from "../Contexts/AuthContext";
-import { CardForm } from "../Components";
+import { CardForm, Card } from "../Components";
 
 export default function Cards () {
   const { account, isAdmin, getBalance } = useAuth()
@@ -36,6 +36,13 @@ export default function Cards () {
     getBalance();
   }
 
+  const sendCard = async (card, address) => {
+    await Contract.giveCard(account, card.id, address);
+
+    getCards();
+    getBalance();
+  }
+
   useEffect(() => {
     getCards();
   }, []);
@@ -48,17 +55,7 @@ export default function Cards () {
           <div className="cards-container">
             {myCards && myCardsGrouped && myCardsGrouped.map(e => {
               const cards = myCards.filter(card => card.groupId == e);
-              return (
-                <div key={e} className="cards-wrapper">
-                  <p className="card-title">{cards[0].name}</p>
-                  <p className="card-description">Description: {cards[0].description}</p>
-
-                  <div className="card-bottom-data">
-                    <p className="card-info">Réduction: {cards[0].discount}%</p>
-                    <p className="card-info">Quantité: {cards.length}</p>                  
-                  </div>
-                </div>
-              )
+              return <Card key={e} card={cards[0]} number={cards.length} sendCard={sendCard} />
             })}
           </div>
         </div>  
@@ -71,20 +68,7 @@ export default function Cards () {
         <div className="cards-container">
         {availableCards && availableCardsGrouped && availableCardsGrouped.map(e => {
             const cards = availableCards.filter(card => card.groupId == e);
-            return (
-              <div key={e} className="cards-wrapper">
-                <div className="card-bottom-data">
-                  <p className="card-title">{cards[0].name}</p>
-                  <a onClick={() => buyCard(cards[0])} className="card-buy-button">Acheter</a>
-                </div>
-                <p className="card-description">Description: {cards[0].description}</p>
-                <div className="card-bottom-data">
-                <p className="card-info">Réduction: {cards[0].discount} %</p>
-                <p className="card-info">Quantité: {cards.length}</p>
-                </div>
-                
-              </div>
-            )
+            return <Card key={e} card={cards[0]} number={cards.length} buyCard={buyCard} />
           })}
         </div>
       </div> 

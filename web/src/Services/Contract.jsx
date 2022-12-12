@@ -25,36 +25,40 @@ class Contract {
 
   // Cards
   allCards = async (account) => {
-    return await railRoad.methods.retrieveAllCards().call({ from: account});
+    return await railRoad.methods.retrieveAllCards().call({ from: account });
   }
 
   availableCards = async (account) => {
-    return await railRoad.methods.getAvailableCards().call({ from: account});
+    return await railRoad.methods.getAvailableCards().call({ from: account });
   }
 
   myCards = async (account) => {
-    return await railRoad.methods.getMyCards().call({ from: account});
+    return await railRoad.methods.getMyCards().call({ from: account });
   }
 
   createCard = async (account, data) => {
-    return await railRoad.methods.createCard(data.name, data.price, data.count, data.discount, data.image, data.description).send({ from: account, gasLimit: 2100000,gas: 4700000});
+    return await railRoad.methods.createCard(data.name, data.price, data.count, data.discount, data.image, data.description).send({ from: account, gasLimit: 2100000,gas: 4700000 });
   }
 
   buyCard = async (account, id, price) => {
-    return await railRoad.methods.buyCard(id).send({ from: account, gasLimit: 2100000, gas: 4700000, value: price});
+    return await railRoad.methods.buyCard(id).send({ from: account, gasLimit: 2100000, gas: 4700000, value: price });
+  }
+
+  giveCard = async (account, id, address) => {
+    return await railRoad.methods.giveCard(id, address).send({ from: account, gasLimit: 2100000, gas: 4700000 });
   }
 
   // Tickets
   ticketPrice = async (account) => {
-    return await railRoad.methods.ticketPriceAfterDiscount().call({ from: account});
+    return await railRoad.methods.ticketPriceAfterDiscount().call({ from: account });
   }
 
   myTickets = async (account) => {
-    return await railRoad.methods.getMyTickets().call({ from: account});
+    return await railRoad.methods.getMyTickets().call({ from: account });
   }
 
   buyTicket = async (account, type, price) => {
-    return await railRoad.methods.buyTicket(type).send({ from: account, gasLimit: 2100000, gas: 4700000, value: price});
+    return await railRoad.methods.buyTicket(type).send({ from: account, gasLimit: 2100000, gas: 4700000, value: price });
   }
 }
 
