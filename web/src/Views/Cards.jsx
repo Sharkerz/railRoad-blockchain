@@ -42,39 +42,55 @@ export default function Cards () {
 
   return (
     <div style={{marginTop: "-240px", zIndex: "10000"}}>
-      <div className="cards-title">
-        <h1>My cards : {myCards && myCards.length}</h1>
-        <div>
-          {myCards && myCardsGrouped && myCardsGrouped.map(e => {
-            const cards = myCards.filter(card => card.groupId == e);
-            return (
-              <div key={e}>
-                <p>Nom: {cards[0].name}</p>
-                <p>Description: {cards[0].description}</p>
-                <p>Réduction: {cards[0].discount}</p>
-                <p>Nombre: {cards.length}</p>
-              </div>
-            )
-          })}
-        </div>
+      <div className="cards-containter-wrapper">
+        <div className="cards-title">
+          <h1>Mes cartes : {myCards && myCards.length}</h1>
+          <div className="cards-container">
+            {myCards && myCardsGrouped && myCardsGrouped.map(e => {
+              const cards = myCards.filter(card => card.groupId == e);
+              return (
+                <div key={e} className="cards-wrapper">
+                  <p className="card-title">{cards[0].name}</p>
+                  <p className="card-description">Description: {cards[0].description}</p>
+
+                  <div className="card-bottom-data">
+                    <p className="card-info">Réduction: {cards[0].discount}%</p>
+                    <p className="card-info">Quantité: {cards.length}</p>                  
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>  
+        <div></div>      
       </div>
+
+      <div className="cards-containter-wrapper">
       <div className="available-cards-title">
-        <h1>Available cards {isAdmin && <a onClick={() => {setShowModal(!showModal)}}>show/hide</a>}</h1>
-        <div>
+        <h1>Mes cartes disponibles {isAdmin && <a onClick={() => {setShowModal(!showModal)}}>show/hide</a>}</h1>
+        <div className="cards-container">
         {availableCards && availableCardsGrouped && availableCardsGrouped.map(e => {
             const cards = availableCards.filter(card => card.groupId == e);
             return (
-              <div key={e}>
-                <p>Nom: {cards[0].name}</p>
-                <p>Description: {cards[0].description}</p>
-                <p>Réduction: {cards[0].discount} %</p>
-                <p>Nombre disponible: {cards.length}</p>
-                <a onClick={() => buyCard(cards[0])}>Acheter</a>
+              <div key={e} className="cards-wrapper">
+                <div className="card-bottom-data">
+                  <p className="card-title">{cards[0].name}</p>
+                  <a onClick={() => buyCard(cards[0])} className="card-buy-button">Acheter</a>
+                </div>
+                <p className="card-description">Description: {cards[0].description}</p>
+                <div className="card-bottom-data">
+                <p className="card-info">Réduction: {cards[0].discount} %</p>
+                <p className="card-info">Quantité: {cards.length}</p>
+                </div>
+                
               </div>
             )
           })}
         </div>
+      </div> 
+      <div></div>       
       </div>
+
 
       {
         showModal &&
