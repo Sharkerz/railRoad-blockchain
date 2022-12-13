@@ -5,6 +5,7 @@ import {
   Button,
   Form,
   Input,
+  Modal
 } from 'antd';
 
 export default function CardForm (props) {
@@ -37,7 +38,7 @@ export default function CardForm (props) {
   }
 
   return (
-    <div style={{ padding: "20px" }} className="form-wrapper">
+    <Modal style={{ padding: "20px" }} className="form-wrapper">
       <Form labelCol={{ span: 4 }}
             wrapperCol={{ span: 14 }}
             layout="horizontal" className="form">
@@ -61,6 +62,6 @@ export default function CardForm (props) {
               </div>
 
       </Form>
-    </div>
+    </Modal>
   );
 }

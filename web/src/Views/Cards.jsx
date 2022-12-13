@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Contract from "../Services/Contract";
 import { useAuth } from "../Contexts/AuthContext";
 import { CardForm, Card } from "../Components";
+import  CoinSVG  from "../Images/coin.png"
 
 export default function Cards () {
   const { account, isAdmin, getBalance } = useAuth()
@@ -9,7 +10,8 @@ export default function Cards () {
   const [availableCardsGrouped, setAvailableCardsGrouped] = useState();
   const [myCards, setMyCards] = useState();
   const [myCardsGrouped, setMyCardsGrouped] = useState();
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const getCards = async () => {
     const _availableCards = await Contract.availableCards(account);
@@ -47,6 +49,18 @@ export default function Cards () {
     getCards();
   }, []);
 
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div style={{marginTop: "-240px", zIndex: "10000"}}>
       <div className="cards-containter-wrapper">
@@ -64,7 +78,8 @@ export default function Cards () {
 
       <div className="cards-containter-wrapper">
       <div className="available-cards-title">
-        <h1>Mes cartes disponibles {isAdmin && <a onClick={() => {setShowModal(!showModal)}}>show/hide</a>}</h1>
+        <h1>Mes cartes disponibles</h1>
+        {isAdmin && <a className="button-showcards" onClick={showModal}>Ajouter une carte</a>}
         <div className="cards-container">
         {availableCards && availableCardsGrouped && availableCardsGrouped.map(e => {
             const cards = availableCards.filter(card => card.groupId == e);
@@ -72,14 +87,16 @@ export default function Cards () {
           })}
         </div>
       </div> 
-      <div></div>       
+      <div><img src={CoinSVG} style={{height: "200px", marginTop: "250px", marginLeft: "50px"}}></img></div>       
       </div>
 
 
       {
-        showModal &&
+
         <CardForm getCards={getCards} />
       }
+      {/* <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>test</Modal> */}
+
     </div>
   );
 }

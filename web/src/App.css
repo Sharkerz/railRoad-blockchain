@@ -397,3 +397,13 @@
   display: grid;
   grid-template-columns: 3fr 1fr;
 }
+
+.button-showcards {
+  background-color: #47E6A4;
+  padding: 10px 15px;
+  font-size: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #151718;
+  font-weight: 600;
+}

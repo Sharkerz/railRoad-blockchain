@@ -33,27 +33,39 @@ export default function Tickets () {
   }, []);
 
   return (
-    <div>
-      <h1>Tickets</h1>
-      <div>
-        <div>
-          <h1>Bus</h1>
-          <p>Price: {ticketPrice}</p>
-          <p>Nombre possedé: {myTickets && myTickets.filter(ticket => ticket.ticketType == "bus").length}</p>
-          <a onClick={() => buyTicket('bus')}>Acheter</a>
-        </div>
-        <div>
-          <h1>Train</h1>
-          <p>Price: {ticketPrice}</p>
-          <p>Nombre possedé: {myTickets && myTickets.filter(ticket => ticket.ticketType == "train").length}</p>
-          <a onClick={() => buyTicket('train')}>Acheter</a>
-        </div>
-        <div>
-          <h1>Metro</h1>
-          <p>Price: {ticketPrice}</p>
-          <p>Nombre possedé: {myTickets && myTickets.filter(ticket => ticket.ticketType == "subway").length}</p>
-          <a onClick={() => buyTicket('subway')}>Acheter</a>
-        </div>
+    <div style={{marginTop: "-240px", zIndex: "10000"}} >
+
+
+      <div className="cards-containter-wrapper">
+      <div className="cards-title">
+      <h1>Mes tickets</h1>    
+        <div className="cards-container">
+          <div className="cards-wrapper">
+          <div className="card-bottom-data">
+            <h1 className="card-title">Bus</h1>
+            <a className="card-buy-button" onClick={() => buyTicket('bus')}>Acheter</a>
+            </div>
+            <p className="card-info">Price: {ticketPrice}</p>
+            <p className="card-info">Nombre possedé: {myTickets && myTickets.filter(ticket => ticket.ticketType == "bus").length}</p>
+          </div>
+          <div className="cards-wrapper">
+          <div className="card-bottom-data">
+            <h1 className="card-title">Train</h1>
+            <a className="card-buy-button" onClick={() => buyTicket('train')}>Acheter</a>
+            </div>
+            <p className="card-info">Price: {ticketPrice}</p>
+            <p className="card-info">Nombre possedé: {myTickets && myTickets.filter(ticket => ticket.ticketType == "train").length}</p>
+          </div>
+          <div className="cards-wrapper">
+          <div className="card-bottom-data">
+            <h1 className="card-title">Metro</h1>
+            <a className="card-buy-button" onClick={() => buyTicket('subway')}>Acheter</a>
+          </div>
+            <p className="card-info">Price: {ticketPrice}</p>
+            <p className="card-info">Nombre possedé: {myTickets && myTickets.filter(ticket => ticket.ticketType == "subway").length}</p>
+          </div>
+        </div>  
+      </div >
       </div>
     </div>
   );
