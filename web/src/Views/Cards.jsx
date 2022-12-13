@@ -89,12 +89,7 @@ export default function Cards () {
       </div> 
       <div><img src={CoinSVG} style={{height: "200px", marginTop: "250px", marginLeft: "50px"}}></img></div>       
       </div>
-
-
-      {
-
-        <CardForm getCards={getCards} />
-      }
+      <CardForm getCards={getCards} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} />
       {/* <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>test</Modal> */}
 
     </div>
