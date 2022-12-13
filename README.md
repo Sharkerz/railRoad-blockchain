@@ -16,7 +16,7 @@ Dans le fichier /*migrations/1_deploy_contracts.js*, modifier la ligne 4 en remp
 
 excutez la commande `truffle deploy`
 
-## Applicaion web
+## Application web
 
 Rendez-vous dans le dossier *web*.
 
