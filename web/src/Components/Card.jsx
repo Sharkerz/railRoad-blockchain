@@ -32,6 +32,12 @@ export default function Card({ card, number, buyCard, sendCard }) {
           <p className="card-info">Réduction: {card.discount}%</p>
           <p className="card-info">Quantité: {number}</p>
         </div>
+        {
+          buyCard &&
+          <div className="card-bottom-data">
+            <p className="card-info">{card.price} WEI</p>
+          </div>
+        }
       </div>
       
       {
