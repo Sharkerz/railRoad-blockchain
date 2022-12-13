@@ -10,12 +10,12 @@ import {
 
 export default function CardForm ({ getCards, open, onOk, onCancel }) {
   const { account, isAdmin } = useAuth()
-  const [name, setName] = useState("test");
-  const [price, setPrice] = useState(10)
-  const [count, setCount] = useState(10);
-  const [discount, setDiscount] = useState(10);
-  const [image, setImage] = useState("test");
-  const [description, setDescription] = useState("test");
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState()
+  const [count, setCount] = useState();
+  const [discount, setDiscount] = useState();
+  const [image, setImage] = useState();
+  const [description, setDescription] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
