@@ -407,3 +407,21 @@
   color: #151718;
   font-weight: 600;
 }
+
+.ant-modal-content {
+  background-color: #0f1112 !important;
+}
+
+.ant-modal-close {
+  color: #ffffff !important;
+}
+
+.ant-btn-primary {
+  background-color: #47e6a4;
+  color: #151718;
+}
+
+.ant-btn-primary:hover {
+  background-color: #47e6a4 !important;
+  color: #151718 !important;
+}
